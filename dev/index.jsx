@@ -6,8 +6,8 @@ import {Provider} from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 import {applyMiddleware, createStore} from 'redux';
 
-import SignIn from './components/SignIn.jsx';
 import SignUp from './components/SignUp.jsx';
+import SignIn from './components/SignIn.jsx';
 import Dashboard from './components/Dashboard.jsx';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxThunk)(createStore);

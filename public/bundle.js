@@ -3343,13 +3343,13 @@ var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
 var _redux = __webpack_require__(39);
 
-var _SignIn = __webpack_require__(344);
-
-var _SignIn2 = _interopRequireDefault(_SignIn);
-
 var _SignUp = __webpack_require__(345);
 
 var _SignUp2 = _interopRequireDefault(_SignUp);
+
+var _SignIn = __webpack_require__(344);
+
+var _SignIn2 = _interopRequireDefault(_SignIn);
 
 var _Dashboard = __webpack_require__(346);
 
@@ -36321,21 +36321,114 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reduxForm = __webpack_require__(177);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var SignIn = function SignIn() {
-  return _react2.default.createElement(
-    'h1',
-    null,
-    'Dashboard!'
-  );
-};
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-exports.default = SignIn;
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SignIn = function (_Component) {
+  _inherits(SignIn, _Component);
+
+  function SignIn(props) {
+    _classCallCheck(this, SignIn);
+
+    var _this = _possibleConstructorReturn(this, (SignIn.__proto__ || Object.getPrototypeOf(SignIn)).call(this, props));
+
+    _this.state = {
+      Email: 'Enter your email',
+      Password: ''
+    };
+    _this.handleEmail = _this.handleEmail.bind(_this);
+    _this.handlePassword = _this.handlePassword.bind(_this);
+    _this.handleSignIn = _this.handleSignIn.bind(_this);
+    return _this;
+  }
+
+  _createClass(SignIn, [{
+    key: 'handleEmail',
+    value: function handleEmail(event) {
+      this.setState({
+        Email: event.target.value
+      });
+    }
+  }, {
+    key: 'handlePassword',
+    value: function handlePassword(event) {
+      this.setState({
+        Password: event.target.value
+      });
+    }
+  }, {
+    key: 'handleSignIn',
+    value: function handleSignIn(event) {
+      event.preventDefault();
+      console.log("call action creator to api");
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      console.log("this.props are ", this.props);
+      var handleSubmit = this.props.handleSubmit;
+
+
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'h1',
+          null,
+          'SignIn'
+        ),
+        _react2.default.createElement(
+          'form',
+          { onSubmit: handleSubmit(this.handleSignIn) },
+          _react2.default.createElement(
+            'fieldset',
+            null,
+            _react2.default.createElement(
+              'label',
+              null,
+              'Email'
+            ),
+            _react2.default.createElement('input', { value: this.state.Email, onChange: this.handleEmail })
+          ),
+          _react2.default.createElement(
+            'fieldset',
+            null,
+            _react2.default.createElement(
+              'label',
+              null,
+              'Password'
+            ),
+            _react2.default.createElement('input', { type: 'password', value: this.state.Password, onChange: this.handlePassword })
+          ),
+          _react2.default.createElement(
+            'button',
+            { type: 'submit' },
+            'Send'
+          )
+        )
+      );
+    }
+  }]);
+
+  return SignIn;
+}(_react.Component);
+
+exports.default = (0, _reduxForm.reduxForm)({
+  form: 'signin'
+})(SignIn);
 
 /***/ }),
 /* 345 */
@@ -36354,6 +36447,8 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reduxForm = __webpack_require__(177);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -36365,15 +36460,48 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var SignUp = function (_Component) {
   _inherits(SignUp, _Component);
 
-  function SignUp() {
+  function SignUp(props) {
     _classCallCheck(this, SignUp);
 
-    return _possibleConstructorReturn(this, (SignUp.__proto__ || Object.getPrototypeOf(SignUp)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (SignUp.__proto__ || Object.getPrototypeOf(SignUp)).call(this, props));
+
+    _this.state = {
+      Email: 'Enter your email',
+      Password: ''
+    };
+    _this.handleEmail = _this.handleEmail.bind(_this);
+    _this.handlePassword = _this.handlePassword.bind(_this);
+    _this.handleSignUp = _this.handleSignUp.bind(_this);
+    return _this;
   }
 
   _createClass(SignUp, [{
+    key: 'handleEmail',
+    value: function handleEmail(event) {
+      this.setState({
+        Email: event.target.value
+      });
+    }
+  }, {
+    key: 'handlePassword',
+    value: function handlePassword(event) {
+      this.setState({
+        Password: event.target.value
+      });
+    }
+  }, {
+    key: 'handleSignUp',
+    value: function handleSignUp(event) {
+      event.preventDefault();
+      console.log("call action creator to api");
+    }
+  }, {
     key: 'render',
     value: function render() {
+      console.log("this.props are ", this.props);
+      var handleSubmit = this.props.handleSubmit;
+
+
       return _react2.default.createElement(
         'div',
         null,
@@ -36381,6 +36509,35 @@ var SignUp = function (_Component) {
           'h1',
           null,
           'SignUp'
+        ),
+        _react2.default.createElement(
+          'form',
+          { onSubmit: handleSubmit(this.handleSignUp) },
+          _react2.default.createElement(
+            'fieldset',
+            null,
+            _react2.default.createElement(
+              'label',
+              null,
+              'Email'
+            ),
+            _react2.default.createElement('input', { value: this.state.Email, onChange: this.handleEmail })
+          ),
+          _react2.default.createElement(
+            'fieldset',
+            null,
+            _react2.default.createElement(
+              'label',
+              null,
+              'Password'
+            ),
+            _react2.default.createElement('input', { type: 'password', value: this.state.Password, onChange: this.handlePassword })
+          ),
+          _react2.default.createElement(
+            'button',
+            { type: 'submit' },
+            'Send'
+          )
         )
       );
     }
@@ -36389,7 +36546,9 @@ var SignUp = function (_Component) {
   return SignUp;
 }(_react.Component);
 
-exports.default = SignUp;
+exports.default = (0, _reduxForm.reduxForm)({
+  form: 'signup'
+})(SignUp);
 
 /***/ }),
 /* 346 */
