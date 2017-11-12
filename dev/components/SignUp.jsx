@@ -1,62 +1,45 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
+import handleAuth from '../actions/handleAuth.jsx';
 
 class SignUp extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      Email: 'Enter your email',
-      Password: ''
-    }
-    this.handleEmail = this.handleEmail.bind(this);
-    this.handlePassword = this.handlePassword.bind(this);
-    this.handleSignUp = this.handleSignUp.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);;
   }
 
-  handleEmail(event){
-    this.setState({
-      Email: event.target.value
+  onSubmit(values){
+    const {history} = this.props;
+    this.props.handleAuth(values, ()=> {
+      history.push('/');
     });
-  }
-
-  handlePassword(event){
-    this.setState({
-      Password: event.target.value
-    });
-  }
-
-  handleSignUp(event){
-    event.preventDefault();
-    console.log("call action creator to api")
   }
   
   render(){
-    console.log("this.props are ", this.props)
     const {handleSubmit} = this.props;
+
+    console.log("this.props are ", this.props)
 
     return(
       <div>
         <h1>SignUp</h1>
-        <form onSubmit={handleSubmit(this.handleSignUp)}>
-          <fieldset>
-          <label>Email</label>
-          <input value={this.state.Email} onChange={this.handleEmail} />
-          </fieldset>
-
-          <fieldset>
-          <label>Password</label>
-          <input type="password" value={this.state.Password} onChange={this.handlePassword} />
-          </fieldset>
-          <button type="submit">Send</button>
+        <form onSubmit={handleSubmit(this.onSubmit)}>
+          <div>
+            <label htmlFor="email">Email</label>
+            <Field name="email" component="input" type="email" />
+          </div>
+          <div>
+            <label htmlFor="password">Password</label>
+            <Field name="password" component="input" type="password" />
+          </div>
+          <button type="submit">Submit</button>
         </form>
       </div>
     )
   }
 }
 
-
-
-
 export default reduxForm({
   form: 'signup'
-})(SignUp);
+})(connect(null, {handleAuth})(SignUp));

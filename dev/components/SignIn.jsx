@@ -57,6 +57,6 @@ class SignIn extends Component {
 
 
 
-export default reduxForm({
-  form: 'signin'
-})(SignIn);
+// export default reduxForm({
+//   form: 'signin'
+// })(SignIn);
