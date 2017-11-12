@@ -37113,6 +37113,8 @@ var _axios = __webpack_require__(353);
 
 var _axios2 = _interopRequireDefault(_axios);
 
+var _types = __webpack_require__(373);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var BASE_URL = 'http://localhost:4000/api';
@@ -37129,6 +37131,11 @@ function handleAuth(credentials, callback) {
   return function (dispatch) {
     _axios2.default.post(BASE_URL + '/signup', toSend).then(function (response) {
       console.log("the response inside handleAuth ", response);
+      dispatch({ type: _types.AUTH_USER });
+
+      localStorage.setItem('token', response.data.token);
+
+      callback();
     }).catch(function (error) {
       console.log("The error from handleAuth axios is ", error);
     });
@@ -38051,6 +38058,19 @@ var Dashboard = function Dashboard() {
 };
 
 exports.default = Dashboard;
+
+/***/ }),
+/* 373 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var AUTH_USER = exports.AUTH_USER = 'auth_user';
+var UNAUTH_USER = exports.UNAUTH_USER = 'unauth_user';
 
 /***/ })
 /******/ ]);
