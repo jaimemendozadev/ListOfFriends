@@ -1,13 +1,13 @@
 # [ListOfFriends](https://github.com/jaimemendozadev/ListOfFriends)
 
 
-ListOfFriends is a simple app for storing a List of your friends. Each friend should have an unique email, profile picture, description. As a user, you should be able to sign in/sign up and view/edit your profile while viewing the profiles of other registered users on the site.
+ListOfFriends is a simple app for storing a List of your friends. Each friend should have an unique email, profile picture, and description. As a user, you should be able to sign in/sign up and view/edit your profile while viewing the profiles of other registered users on the site.
 
-*Note*: This is merely a scaffolding of an app and in no way to complete. The following components still need to be build:
+*Note*: This is merely a scaffolding of an app and is in no way complete. The following components still need to be built:
 
 - A working Sign In Page component for signing in returning authenticated users.
 
-- A working Dashboard component that allows a user to edit his/her profile, including email, bio, and upload a photo
+- A working Dashboard component that allows a user to edit his/her profile, including email, bio, and upload a photo.
 
 - A Friends Feed that allows an authenticated user to view the profiles of other registered users of the app.
 
@@ -15,7 +15,7 @@ ListOfFriends is a simple app for storing a List of your friends. Each friend sh
 
 - App still needs to be hooked up to the backend to retrieve other user profiles to display on frontend.
 
-- Overall app state needs to be designed implemented in Redux store.
+- Overall app state needs to be designed/implemented in Redux store.
 
 
 ## Table of contents
